@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-06T17:50:08.226Z</updated>
+  <updated>2019-05-07T05:23:30.067Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,19 +21,27 @@
     <link href="http://yoursite.com/2019/05/07/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/"/>
     <id>http://yoursite.com/2019/05/07/个人简历/</id>
     <published>2019-05-06T17:49:08.000Z</published>
-    <updated>2019-05-06T17:50:08.226Z</updated>
+    <updated>2019-05-07T05:23:30.067Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;联系方式&quot;&gt;&lt;a href=&quot;#联系方式&quot; class=&quot;headerlink&quot; title=&quot;联系方式&quot;&gt;&lt;/a&gt;联系方式&lt;/h1&gt;&lt;ul&gt;
+      &lt;h1 id=&quot;联系方式&quot;&gt;&lt;a href=&quot;#联系方式&quot; class=&quot;headerlink&quot; title=&quot;联系方式&quot;&gt;&lt;/a&gt;联系方式&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;手机：17501664533&lt;/li&gt;
-&lt;li&gt;Email：&lt;a
-        
-      
+&lt;li&gt;Email：&lt;a href=&quot;mailto:1327192007@qq.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;1327192007@qq.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;QQ/微信号：1327192007/17501664533&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;个人信息&quot;&gt;&lt;a href=&quot;#个人信息&quot; class=&quot;headerlink&quot; title=&quot;个人信息&quot;&gt;&lt;/a&gt;个人信息&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;孙智文/男/1995 &lt;/li&gt;
+&lt;li&gt;本科/材料成型及控制工程 &lt;/li&gt;
+&lt;li&gt;工作年限：1年&lt;ul&gt;
+&lt;li&gt;博客：&lt;a href=&quot;www.kimruse.xyz&quot;&gt;www.kimruse.xyz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Github：&lt;a href=&quot;http://github.com/KimRuse&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://github.com/KimRuse&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;期望职位：Web初级前端人员&lt;/li&gt;
+&lt;li&gt;期望薪资：税前月薪4k+，特别喜欢的公司可例外&lt;/li&gt;
+&lt;li&gt;期望城市：上海&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
