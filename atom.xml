@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-07T08:21:01.973Z</updated>
+  <updated>2019-05-07T08:24:29.854Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/05/07/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/"/>
     <id>http://yoursite.com/2019/05/07/个人简历/</id>
     <published>2019-05-06T17:49:08.000Z</published>
-    <updated>2019-05-07T08:21:01.973Z</updated>
+    <updated>2019-05-07T08:24:29.854Z</updated>
     
     <summary type="html">
     
@@ -34,7 +34,7 @@
 &lt;li&gt;孙智文/男/1995 &lt;/li&gt;
 &lt;li&gt;本科/材料成型及控制工程 &lt;/li&gt;
 &lt;li&gt;工作年限：1年&lt;ul&gt;
-&lt;li&gt;博客：&lt;a href=&quot;www.kimruse.xyz&quot;&gt;www.kimruse.xyz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;博客：&lt;a href&gt;www.kimruse.xyz&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Github：&lt;a href=&quot;http://github.com/KimRuse&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://github.com/KimRuse&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
