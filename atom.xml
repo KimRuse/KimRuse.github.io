@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-16T13:07:34.914Z</updated>
+  <updated>2019-05-16T13:41:24.050Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/05/16/js/"/>
     <id>http://yoursite.com/2019/05/16/js/</id>
     <published>2019-05-16T12:19:49.000Z</published>
-    <updated>2019-05-16T13:07:34.914Z</updated>
+    <updated>2019-05-16T13:41:24.050Z</updated>
     
     <summary type="html">
     
@@ -44,7 +44,7 @@
     <link href="http://yoursite.com/2019/05/07/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/"/>
     <id>http://yoursite.com/2019/05/07/个人简历/</id>
     <published>2019-05-06T17:49:08.000Z</published>
-    <updated>2019-05-16T13:11:03.076Z</updated>
+    <updated>2019-05-16T13:45:22.929Z</updated>
     
     <summary type="html">
     
@@ -65,7 +65,7 @@
     </summary>
     
     
-      <category term="信息" scheme="http://yoursite.com/tags/%E4%BF%A1%E6%81%AF/"/>
+      <category term="信息 置顶" scheme="http://yoursite.com/tags/%E4%BF%A1%E6%81%AF-%E7%BD%AE%E9%A1%B6/"/>
     
   </entry>
   
