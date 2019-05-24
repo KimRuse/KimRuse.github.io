@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="宁静致远">
 <meta property="og:description" content="联系方式 手机：+86-17501664533 Email：WWWNetizen@163.com 微信号：17501664533  个人信息 孙某某/男/1995  本科/材料成型及控制工程  工作年限：1年 期望职位：Web前端开发 期望城市：上海 语言能力：CET-4">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-24T19:36:40.502Z">
+<meta property="og:updated_time" content="2019-05-24T21:31:04.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人简历">
 <meta name="twitter:description" content="联系方式 手机：+86-17501664533 Email：WWWNetizen@163.com 微信号：17501664533  个人信息 孙某某/男/1995  本科/材料成型及控制工程  工作年限：1年 期望职位：Web前端开发 期望城市：上海 语言能力：CET-4">
@@ -434,7 +434,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-25 03:36:40" itemprop="dateModified" datetime="2019-05-25T03:36:40+08:00">2019-05-25</time>
+                <time title="修改时间：2019-05-25 05:31:04" itemprop="dateModified" datetime="2019-05-25T05:31:04+08:00">2019-05-25</time>
               
             
           </span>
@@ -443,6 +443,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/07/个人简历/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/07/个人简历/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -483,7 +496,7 @@
 </ul>
 <a id="more"></a>
 <h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1><ul>
-<li><strong>熟悉</strong> HTML5/CSS3/Javascript/jQuery/Zepto.js/LeSS<ul>
+<li><strong>熟悉</strong> HTML5/CSS3/Javascript/jQuery/Sass<ul>
 <li>原生Ajax或JQuery的Ajax对象实现后端数据调用，实现前端渲染</li>
 <li>常用的跨域问题，JSONP,设置响应头信息，代理</li>
 <li>不同终端的屏幕适配，运用Bootstrap框架等方法实现响应式布局</li>
@@ -568,7 +581,7 @@
           
 
   
-    <div class="comments" id="gitalk-container">
+    <div class="comments" id="comments">
     </div>
 
   
@@ -873,36 +886,37 @@
   
 
   
-
-
   
-    
 
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
 
 
 
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 <script>
-  var gitalk = new Gitalk({
-    clientID: 'b0628532e15f9e174d38',
-    clientSecret: '48f57387f150fc48e96ef2d007fa3fbec0b4a453',
-    repo: 'comments',
-    owner: 'KimRuse',
-    admin: ['KimRuse'],
-    id: md5(location.pathname),
-    
-      language: 'zh-CN',
-    
-    distractionFreeMode: 'true'
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
   });
-  gitalk.render('gitalk-container');
+  new Valine({
+    el: '#comments',
+    verify: ture,
+    notify: ture,
+    appId: 'uXeYY4Qd6RUXSuIdd2467gdd-gzGzoHsz',
+    appKey: '29SrwqgCEcpV8yGSBK1Dr6sU',
+    placeholder: '既然来了，留个爪印再走吧！',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn'
+  });
 </script>
+
+
+
 
   
 

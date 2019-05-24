@@ -443,7 +443,7 @@
           
 
   
-    <div class="comments" id="gitalk-container">
+    <div class="comments" id="comments">
     </div>
 
   
@@ -722,36 +722,37 @@
   
 
   
-
-
   
-    
 
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
 
 
 
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 <script>
-  var gitalk = new Gitalk({
-    clientID: 'b0628532e15f9e174d38',
-    clientSecret: '48f57387f150fc48e96ef2d007fa3fbec0b4a453',
-    repo: 'comments',
-    owner: 'KimRuse',
-    admin: ['KimRuse'],
-    id: md5(location.pathname),
-    
-      language: 'zh-CN',
-    
-    distractionFreeMode: 'true'
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
   });
-  gitalk.render('gitalk-container');
+  new Valine({
+    el: '#comments',
+    verify: ture,
+    notify: ture,
+    appId: 'uXeYY4Qd6RUXSuIdd2467gdd-gzGzoHsz',
+    appKey: '29SrwqgCEcpV8yGSBK1Dr6sU',
+    placeholder: '既然来了，留个爪印再走吧！',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn'
+  });
 </script>
+
+
+
 
   
 
