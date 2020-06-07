@@ -1,6 +1,6 @@
 /* global NexT, CONFIG */
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   var sidebarInner = $('.sidebar-inner');
   var sidebarOffset = CONFIG.sidebar.offset || 12;
@@ -27,14 +27,17 @@ $(document).ready(function() {
     if (headerOffset + sidebarHeight < contentHeight) {
       sidebarInner.affix({
         offset: {
-          top   : headerOffset - sidebarOffset,
+          top: headerOffset - sidebarOffset,
           bottom: footerOffset
         }
       });
       sidebarInner.affix('checkPosition');
     }
 
-    $('#sidebar').css({ 'margin-top': headerOffset, 'margin-left': 'auto' });
+    $('#sidebar').css({
+      'margin-top': headerOffset,
+      'margin-left': 'auto'
+    });
   }
 
   function recalculateAffixPosition() {
@@ -45,7 +48,7 @@ $(document).ready(function() {
 
   function resizeListener() {
     var mql = window.matchMedia('(min-width: 992px)');
-    mql.addListener(function(e) {
+    mql.addListener(function (e) {
       if (e.matches) {
         recalculateAffixPosition();
       }
@@ -55,83 +58,134 @@ $(document).ready(function() {
   initAffix();
   resizeListener();
 });
-
+//背景效果
 ! function () {
-    function n(n, e, t) {
-        return n.getAttribute(e) || t
-    }
+  function n(n, e, t) {
+    return n.getAttribute(e) || t
+  }
 
-    function e(n) {
-        return document.getElementsByTagName(n)
-    }
+  function e(n) {
+    return document.getElementsByTagName(n)
+  }
 
-    function t() {
-        var t = e("script"),
-            o = t.length,
-            i = t[o - 1];
-        return {
-            l: o,
-            z: n(i, "zIndex", -1),
-            o: n(i, "opacity", .5),
-            c: n(i, "color", "0,0,0"),
-            n: n(i, "count", 99)
-        }
+  function t() {
+    var t = e("script"),
+      o = t.length,
+      i = t[o - 1];
+    return {
+      l: o,
+      z: n(i, "zIndex", -1),
+      o: n(i, "opacity", .5),
+      c: n(i, "color", "0,0,0"),
+      n: n(i, "count", 99)
     }
+  }
 
-    function o() {
-        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-            c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body
-            .clientHeight
-    }
+  function o() {
+    a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+      c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body
+      .clientHeight
+  }
 
-    function i() {
-        r.clearRect(0, 0, a, c);
-        var n, e, t, o, m, l;
-        s.forEach(function (i, x) {
-            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y <
-                0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[
-                e], null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m,
-                    l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n
-                            .max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle =
-                        "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r
-                        .stroke()))
-        }), x(i)
-    }
-    var a, c, u, m = document.createElement("canvas"),
-        d = t(),
-        l = "c_n" + d.l,
-        r = m.getContext("2d"),
-        x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window
-        .mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-        function (n) {
-            window.setTimeout(n, 1e3 / 45)
-        },
-        w = Math.random,
-        y = {
-            x: null,
-            y: null,
-            max: 2e4
-        };
-    m.id = l, m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o, e("body")[0]
-        .appendChild(m), o(), window.onresize = o, window.onmousemove = function (n) {
-            n = n || window.event, y.x = n.clientX, y.y = n.clientY
-        }, window.onmouseout = function () {
-            y.x = null, y.y = null
-        };
-    for (var s = [], f = 0; d.n > f; f++) {
-        var h = w() * a,
-            g = w() * c,
-            v = 2 * w() - 1,
-            p = 2 * w() - 1;
-        s.push({
-            x: h,
-            y: g,
-            xa: v,
-            ya: p,
-            max: 6e3
-        })
-    }
-    u = s.concat([y]), setTimeout(function () {
-        i()
-    }, 100)
+  function i() {
+    r.clearRect(0, 0, a, c);
+    var n, e, t, o, m, l;
+    s.forEach(function (i, x) {
+      for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y <
+        0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[
+        e], null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m,
+        l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n
+            .max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle =
+          "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r
+          .stroke()))
+    }), x(i)
+  }
+  var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window
+    .mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function (n) {
+      window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+      x: null,
+      y: null,
+      max: 2e4
+    };
+  m.id = l, m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o, e("body")[0]
+    .appendChild(m), o(), window.onresize = o, window.onmousemove = function (n) {
+      n = n || window.event, y.x = n.clientX, y.y = n.clientY
+    }, window.onmouseout = function () {
+      y.x = null, y.y = null
+    };
+  for (var s = [], f = 0; d.n > f; f++) {
+    var h = w() * a,
+      g = w() * c,
+      v = 2 * w() - 1,
+      p = 2 * w() - 1;
+    s.push({
+      x: h,
+      y: g,
+      xa: v,
+      ya: p,
+      max: 6e3
+    })
+  }
+  u = s.concat([y]), setTimeout(function () {
+    i()
+  }, 100)
 }();
+//点击效果
+! function (e, t, a) {
+  function n() {
+    c(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), o(), r()
+  }
+
+  function r() {
+    for (var e = 0; e < d.length; e++) d[e].alpha <= 0 ? (t.body.removeChild(d[e].el), d.splice(e, 1)) : (d[e].y--, d[e].scale += .004, d[e].alpha -= .013, d[e].el.style.cssText = "left:" + d[e].x + "px;top:" + d[e].y + "px;opacity:" + d[e].alpha + ";transform:scale(" + d[e].scale + "," + d[e].scale + ") rotate(45deg);background:" + d[e].color + ";z-index:99999");
+    requestAnimationFrame(r)
+  }
+
+  function o() {
+    var t = "function" == typeof e.onclick && e.onclick;
+    e.onclick = function (e) {
+      t && t(), i(e)
+    }
+  }
+
+  function i(e) {
+    var a = t.createElement("div");
+    a.className = "heart", d.push({
+      el: a,
+      x: e.clientX - 5,
+      y: e.clientY - 5,
+      scale: 1,
+      alpha: 1,
+      color: s()
+    }), t.body.appendChild(a)
+  }
+
+  function c(e) {
+    var a = t.createElement("style");
+    a.type = "text/css";
+    try {
+      a.appendChild(t.createTextNode(e))
+    } catch (t) {
+      a.styleSheet.cssText = e
+    }
+    t.getElementsByTagName("head")[0].appendChild(a)
+  }
+
+  function s() {
+    return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+  }
+  var d = [];
+  e.requestAnimationFrame = function () {
+    return e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+      setTimeout(e, 1e3 / 60)
+    }
+  }(), n()
+}(window, document);
