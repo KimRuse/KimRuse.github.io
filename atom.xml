@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-07T14:09:21.938Z</updated>
+  <updated>2020-06-12T08:23:24.886Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>游览器缓存</title>
-    <link href="http://yoursite.com/2020/01/07/%E6%B8%B8%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/"/>
-    <id>http://yoursite.com/2020/01/07/游览器缓存/</id>
-    <published>2020-01-06T17:49:08.000Z</published>
-    <updated>2020-06-07T14:09:21.938Z</updated>
+    <title>参考Babel编写async await的简单实现</title>
+    <link href="http://yoursite.com/2020/02/08/%E5%8F%82%E8%80%83Babel%E7%BC%96%E5%86%99async%20await%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://yoursite.com/2020/02/08/参考Babel编写async await的简单实现/</id>
+    <published>2020-02-07T17:49:08.000Z</published>
+    <updated>2020-06-12T08:23:24.886Z</updated>
     
     <summary type="html">
     
@@ -29,9 +29,87 @@
       
         
         
-          &lt;h1 id=&quot;游览器缓存&quot;&gt;&lt;a href=&quot;#游览器缓存&quot; class=&quot;headerlink&quot; title=&quot;游览器缓存&quot;&gt;&lt;/a&gt;游览器缓存&lt;/h1&gt;&lt;h2 id=&quot;游览器缓存有四个方面：&quot;&gt;&lt;a href=&quot;#游览器缓存有四个方面：&quot;
+          &lt;h2 id=&quot;参考Babel编写async-await的简单实现&quot;&gt;&lt;a href=&quot;#参考Babel编写async-await的简单实现&quot; class=&quot;headerlink&quot; title=&quot;参考Babel编写async
         
       
+    
+    </summary>
+    
+      <category term="编程语言" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>游览器缓存</title>
+    <link href="http://yoursite.com/2020/01/07/%E6%B8%B8%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/"/>
+    <id>http://yoursite.com/2020/01/07/游览器缓存/</id>
+    <published>2020-01-06T17:49:08.000Z</published>
+    <updated>2020-06-11T13:47:19.759Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;游览器缓存&quot;&gt;&lt;a href=&quot;#游览器缓存&quot; class=&quot;headerlink&quot; title=&quot;游览器缓存&quot;&gt;&lt;/a&gt;游览器缓存&lt;/h1&gt;&lt;h2 id=&quot;游览器缓存有四个方面：&quot;&gt;&lt;a href=&quot;#游览器缓存有四个方面：&quot; class=&quot;headerlink&quot; title=&quot;游览器缓存有四个方面：&quot;&gt;&lt;/a&gt;游览器缓存有四个方面：&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Memory Cache&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Service Worker Cache&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;HTTP Cache (Memory Cache and Disk Cache)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Push Cache&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上按照资源的优先级排列&lt;/p&gt;
+&lt;h2 id=&quot;HTTP-缓存机制&quot;&gt;&lt;a href=&quot;#HTTP-缓存机制&quot; class=&quot;headerlink&quot; title=&quot;HTTP 缓存机制&quot;&gt;&lt;/a&gt;HTTP 缓存机制&lt;/h2&gt;&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;HTTP缓存分为&lt;strong&gt;强缓存&lt;/strong&gt;和&lt;strong&gt;协商缓存&lt;/strong&gt;，前者优先级高于后者。缓存根据存放位置不同分为，Memory Cache（内存） 和 Disk Cache（硬盘）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;强缓存&quot;&gt;&lt;a href=&quot;#强缓存&quot; class=&quot;headerlink&quot; title=&quot;强缓存&quot;&gt;&lt;/a&gt;强缓存&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Header属性Expires、Cache-Control、Pragma 控制强缓存，优先级从左依次升高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Expires的值是一个HTTP日期，与系统时间比较判断缓存效期&lt;/li&gt;
+&lt;li&gt;Expires依赖客户端时间，可能破坏预期&lt;/li&gt;
+&lt;li&gt;Expires作为向下兼容方案。Cache-Control是完全替代方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Cache-Control 控制缓存public和private资源，不缓存no-store，不走强缓存no-cahce&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;代理服务器缓存public资源，通过s-maxage设置仅在代理服务器生效&lt;/li&gt;
+&lt;li&gt;默认缓存private，仅当设置s-maxage时变更为public&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;协商缓存&quot;&gt;&lt;a href=&quot;#协商缓存&quot; class=&quot;headerlink&quot; title=&quot;协商缓存&quot;&gt;&lt;/a&gt;协商缓存&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Header属性 Last-Modified/If-Modified-Since 和 ETag/If-None-Match 控制协商缓存，优先级从左依次升高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Last-Modified 首次请求返回，包含返回资源最后一次修改时间戳&lt;/li&gt;
+&lt;li&gt;If-Modified-Since 非首次请求，用于比对服务器资源上最后一次修改时间&lt;/li&gt;
+&lt;li&gt;时间一致 返回304响应，不一致 添加新Last-Modified值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;​    使用 Last-Modified存在一些弊端，其中多见于以下两点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;编辑文件，文件内容没变，缓存未命中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;最小时间计量为1秒，以为小于1秒的改动无法感知，缓存命中&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;ETag 的值是基于资源内容编码，生成资源唯一标识，首次请求返回&lt;/li&gt;
+&lt;li&gt;If-None-Match 非首次请求，用于比对服务器资源内容编码是否一致&lt;/li&gt;
+&lt;li&gt;ETag 比 Last-Modified 更准确，优先级更高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;​    使用 ETag 的弊端是影响服务器的性能，需要按情况使用&lt;/p&gt;
     
     </summary>
     
@@ -47,17 +125,33 @@
     <link href="http://yoursite.com/2019/05/16/PromiseA+%E6%A0%87%E5%87%86%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%B7%B1%E7%9A%84Promise/"/>
     <id>http://yoursite.com/2019/05/16/PromiseA+标准实现自己的Promise/</id>
     <published>2019-05-16T12:19:49.000Z</published>
-    <updated>2020-06-11T13:29:37.465Z</updated>
+    <updated>2020-06-11T13:44:41.666Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;Promise-A-标准实现自己的-Promise&quot;&gt;&lt;a href=&quot;#Promise-A-标准实现自己的-Promise&quot; class=&quot;headerlink&quot; title=&quot;Promise A/+ 标准实现自己的 Promise&quot;&gt;&lt;/a&gt;Promise
-        
-      
+      &lt;h2 id=&quot;Promise-A-标准实现自己的-Promise&quot;&gt;&lt;a href=&quot;#Promise-A-标准实现自己的-Promise&quot; class=&quot;headerlink&quot; title=&quot;Promise A/+ 标准实现自己的 Promise&quot;&gt;&lt;/a&gt;Promise A/+ 标准实现自己的 Promise&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://promisesaplus.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Promise A/+规范&lt;/a&gt;    &lt;strong&gt;文档地址&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;规范中的术语&quot;&gt;&lt;a href=&quot;#规范中的术语&quot; class=&quot;headerlink&quot; title=&quot;规范中的术语&quot;&gt;&lt;/a&gt;规范中的术语&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;“promise” 是拥有符合规范的then方法的一个对象或函数&lt;/li&gt;
+&lt;li&gt;“thenable” 一个定义了then方法的对象或函数&lt;/li&gt;
+&lt;li&gt;“value” 任意的合法JS值&lt;/li&gt;
+&lt;li&gt;“reason” 一个指示promise为什么被拒绝的值&lt;/li&gt;
+&lt;li&gt;“exception” 一个通过throw语句抛出的值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Promise状态&quot;&gt;&lt;a href=&quot;#Promise状态&quot; class=&quot;headerlink&quot; title=&quot;Promise状态&quot;&gt;&lt;/a&gt;Promise状态&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;一个Promise必须是pending、fulfilled、rejected三种状态之一&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;pending状态时，可转换为 fulfilled 或 rejected 状态&lt;/li&gt;
+&lt;li&gt;fulfilled状态时，不能转化其他状态 且 必须包含value，value不能改变&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;rejected状态时，不能转化其他状态 且 必须包含reason，reason不能改变&lt;/p&gt;
+&lt;p&gt;( 不能改变是指，通过===判定相等 即不变，非深层不变 )&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Promise&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;exc&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 这里没有实现隐藏this上的变量&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; self = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    self.status = &lt;span class=&quot;string&quot;&gt;&#39;pending&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    self.data = &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    self.onResolvedCallback = []&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    self.onRejectedCallback = []&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;resolve&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;val&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;span class=&quot;comment&quot;&gt;/**TODO*/&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;reject&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;res&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;span class=&quot;comment&quot;&gt;/**TODO*/&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		exc(resolve.bind(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;), reject.bind(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt;(e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        reject(e)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;接下来实现resolve 和 reject 处理变更后的状态和值，及可能的回调&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;resolve&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;val&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	setTimeout(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;comment&quot;&gt;// 异步执行所有的回调函数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (_this.status === &lt;span class=&quot;string&quot;&gt;&quot;pending&quot;&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _this.status = &lt;span class=&quot;string&quot;&gt;&quot;resolved&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _this.data = value;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; _this.onResolvedCallback.length; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          _this.onResolvedCallback[i](value);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;reject&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;res&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	setTimeout(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;comment&quot;&gt;// 异步执行所有的回调函数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (_this.status === &lt;span class=&quot;string&quot;&gt;&quot;pending&quot;&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _this.status = &lt;span class=&quot;string&quot;&gt;&quot;rejected&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _this.data = reason;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; _this.onRejectedCallback.length; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          _this.onRejectedCallback[i](reason);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
