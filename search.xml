@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Redux与中间件原理]]></title>
+    <url>%2F2020%2F05%2F08%2FRedux%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[Redux与中间件原理 我们在用到一些中间件如redux-thunk或redux-saga，会经常用到applyMiddleware() 123456// 中间件为redux-thunk时import &#123; createStore, applyMiddleware &#125; from 'redux';import thunk from 'redux-thunk';import rootReducer from './reducers/index';const store = createStore(rootReducer, applyMiddleware(thunk)); 当我们引入中间件时，dispatch这个方法会被高阶函数包装，最后返回一个强化过后的dispatch 12345678910111213141516171819applyMiddleware(...middlewares)-&gt; (createStore) =&gt; (reducer, ...args) =&gt; &#123; const store = &#123;getState&#125; = createStore(reducer, ...args) let dispatch = () =&gt; throw new Error('中间件构建中不许调用') const chain = middlewares.map(middleware =&gt; middleware(&#123;getState, dispatch&#125;) dispatch = compose(...chain)(dispatch) return &#123; ...store, dispatch &#125;&#125;// @return (...args) =&gt; fn1(fn2(fn3....(...args)))function compose(...funcs) &#123; if (funcs.length === 0) return (arg) =&gt; arg if (funcs.length === 1) return funcs[0] return funcs.reduce((a, b) =&gt; (...args) =&gt; a(b(...args)))&#125; 以redux-thunk源码为例，如下 1234567891011121314151617181920function createThunkMiddleware(extraArgument) &#123; return (&#123; dispatch, getState &#125;) =&gt; (next) =&gt; (action) =&gt; &#123; if (typeof action === 'function') &#123; return action(dispatch, getState, extraArgument); &#125; return next(action); &#125;;&#125;const thunk = createThunkMiddleware();const store = createStore(rootReducer, applyMiddleware(thunk));// 经过包装升级的dispatch，store.dispatch = (action) =&gt; &#123; if (typeof action === 'function') &#123; return action(dispatch, getState, extraArgument); &#125; return next(action);&#125; 未完待续…]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[参考Babel编写async await的简单实现]]></title>
     <url>%2F2020%2F02%2F08%2F%E5%8F%82%E8%80%83Babel%E7%BC%96%E5%86%99async%20await%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%2F</url>
     <content type="text"><![CDATA[参考Babel编写async await的简单实现 async函数是generator函数的语法糖 示例12345678910111213141516171819202122const getData = () =&gt; new Promise(resolve =&gt; setTimeout(()=&gt;resolve("data"), 1000))async function test() &#123; const data = await getData() const data2 = await getData() return 'success'&#125;test().then(res =&gt; console.log(res))// 转化await到yieldfunction* testG() &#123; const data = yield getData() const data2 = yield getData() return 'success'&#125;/** 每次调用next的方法就会在下一个的yield的地方停留* 利用这一特性，编写一个自动执行的函数就可以，async函数的功能*/let test = asyncToGenerator( testG)test().then(res =&gt; console.log(res)) 有了一些上面的思路，就可以这样写asyncToGenerator函数 12345678910111213141516171819202122const asyncToGenerator = (fn) =&gt; &#123; return (...props) =&gt; &#123; const gen = fn(...props) return new Promise((resolve, reject) =&gt; &#123; function step(key, arg) &#123; let generatorResult try &#123; generatorResult = gen[key](arg) &#125; catch(e) &#123; return reject(e) &#125; const &#123;val, done&#125; = generatorResult if (done) &#123; return resolve(val) &#125; else return Promise.resolve(val).then(val=&gt;step('next', val), err=&gt;step('throw', err)) &#125; &#125;) &#125;&#125;asyncToGenerator(fn)().then(res =&gt; console.log(res))]]></content>

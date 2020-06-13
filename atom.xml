@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-12T08:23:24.886Z</updated>
+  <updated>2020-06-13T14:26:50.556Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redux与中间件原理</title>
+    <link href="http://yoursite.com/2020/05/08/Redux%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    <id>http://yoursite.com/2020/05/08/Redux与中间件/</id>
+    <published>2020-05-07T17:49:08.000Z</published>
+    <updated>2020-06-13T14:26:50.556Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Redux与中间件原理&quot;&gt;&lt;a href=&quot;#Redux与中间件原理&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="编程语言" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>参考Babel编写async await的简单实现</title>
