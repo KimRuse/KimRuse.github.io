@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="JavaScript 继承两种继承方式，Javascript仅支持其一： 接口继承 – 方法签名 12345678910111213141516//PHP中的接口继承interface InterA &amp;#123;	const TITLE = &quot;PHP接口继承&quot;;	public function showInfo($a, $b);&amp;#125;interface InterB &amp;#123;	publi">
+  <meta name="description" content="Javascript 中的类型转换 目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object  以下皆为Number(), String(), Boolean() 函数转换说明  原始值 -&amp;gt; 转换的类型原始值 -&amp;gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefine">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript继承">
-<meta property="og:url" content="http://yoursite.com/2019/05/16/js/index.html">
+<meta property="og:title" content="Javascript 中的类型转换">
+<meta property="og:url" content="http://yoursite.com/2019/05/12/Javascript 中的类型转换/index.html">
 <meta property="og:site_name" content="宁静致远">
-<meta property="og:description" content="JavaScript 继承两种继承方式，Javascript仅支持其一： 接口继承 – 方法签名 12345678910111213141516//PHP中的接口继承interface InterA &amp;#123;	const TITLE = &quot;PHP接口继承&quot;;	public function showInfo($a, $b);&amp;#125;interface InterB &amp;#123;	publi">
+<meta property="og:description" content="Javascript 中的类型转换 目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object  以下皆为Number(), String(), Boolean() 函数转换说明  原始值 -&amp;gt; 转换的类型原始值 -&amp;gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefine">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-07T13:48:25.561Z">
+<meta property="og:updated_time" content="2020-06-24T15:51:54.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javascript继承">
-<meta name="twitter:description" content="JavaScript 继承两种继承方式，Javascript仅支持其一： 接口继承 – 方法签名 12345678910111213141516//PHP中的接口继承interface InterA &amp;#123;	const TITLE = &quot;PHP接口继承&quot;;	public function showInfo($a, $b);&amp;#125;interface InterB &amp;#123;	publi">
+<meta name="twitter:title" content="Javascript 中的类型转换">
+<meta name="twitter:description" content="Javascript 中的类型转换 目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object  以下皆为Number(), String(), Boolean() 函数转换说明  原始值 -&amp;gt; 转换的类型原始值 -&amp;gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefine">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/16/js/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/12/Javascript 中的类型转换/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Javascript继承 | 宁静致远</title>
+  <title>Javascript 中的类型转换 | 宁静致远</title>
   
 
 
@@ -374,7 +374,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/js/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Javascript 中的类型转换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KimRuse">
@@ -391,7 +391,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Javascript继承
+          <h1 class="post-title" itemprop="name headline">Javascript 中的类型转换
 
               
             
@@ -417,7 +417,7 @@
                 
               
 
-              <time title="创建时间：2019-05-16 20:19:49" itemprop="dateCreated datePublished" datetime="2019-05-16T20:19:49+08:00">2019-05-16</time>
+              <time title="创建时间：2019-05-12 01:49:08" itemprop="dateCreated datePublished" datetime="2019-05-12T01:49:08+08:00">2019-05-12</time>
             
 
             
@@ -434,7 +434,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-07 21:48:25" itemprop="dateModified" datetime="2020-06-07T21:48:25+08:00">2020-06-07</time>
+                <time title="修改时间：2020-06-24 23:51:54" itemprop="dateModified" datetime="2020-06-24T23:51:54+08:00">2020-06-24</time>
               
             
           </span>
@@ -470,8 +470,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/16/js/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/16/js/" itemprop="commentCount"></span>
+                <a href="/2019/05/12/Javascript 中的类型转换/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/12/Javascript 中的类型转换/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -499,70 +499,129 @@
       
 
       
-        <h1 id="JavaScript-继承"><a href="#JavaScript-继承" class="headerlink" title="JavaScript 继承"></a>JavaScript 继承</h1><h3 id="两种继承方式，Javascript仅支持其一："><a href="#两种继承方式，Javascript仅支持其一：" class="headerlink" title="两种继承方式，Javascript仅支持其一："></a>两种继承方式，Javascript仅支持其一：</h3><ul>
-<li>接口继承 – 方法签名 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//PHP中的接口继承</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">InterA</span> </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> TITLE = <span class="string">"PHP接口继承"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span><span class="params">($a, $b)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">InterB</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">readMe</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">InterA</span>,<span class="title">InterB</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span><span class="params">($name, $age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">"&#123;$name&#125;的年龄是&#123;$age&#125;岁！&lt;br&gt;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">readMe</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="keyword">self</span>::TITLE;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<a id="more"></a>
+        <h2 id="Javascript-中的类型转换"><a href="#Javascript-中的类型转换" class="headerlink" title="Javascript 中的类型转换"></a>Javascript 中的类型转换</h2><blockquote>
+<p>目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object </p>
+<p>以下皆为Number(), String(), Boolean() 函数转换说明</p>
+</blockquote>
+<h3 id="原始值-gt-转换的类型"><a href="#原始值-gt-转换的类型" class="headerlink" title="原始值 -&gt; 转换的类型"></a>原始值 -&gt; 转换的类型</h3><p><strong>原始值 -&gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefined, null, +0, -0, NaN, “”），其余转true</strong></p>
+<p><strong>原始值 -&gt; 数字类型 规范中给出了一个ToNumber的方法直接给出了，对应的结果</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数类型</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Undefined</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>+0</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>true 1 false +0</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>返回等值</td>
+</tr>
+<tr>
+<td>String</td>
+<td>比较复杂，看下面例子</td>
+</tr>
+</tbody>
+</table>
+<p>Number试图转换字符串为整数或浮点数，忽略前导0，遇到一个非字符数返回NaN；</p>
+<p>一般使用parseInt和parseFloat，尽可能多解析数值字符，并忽略后面的内容，空字符串和第一个非数值字符返回NaN；</p>
+<p><strong>原始值-&gt;字符类型 规范中给出了一个ToString的方法，对应结果</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数类型</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Undefined</td>
+<td>“undefined”</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>“null”</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>true “true” false “false”</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>数值字符</td>
+</tr>
+<tr>
+<td>String</td>
+<td>返回等值</td>
+</tr>
+</tbody>
+</table>
+<p>NaN -&gt; “NaN” ，Infinity -&gt; “Infinity” ，-Infinity -&gt; “-Infinity” ，-0+0 -&gt; “0”</p>
+<p><strong>原始值 -&gt; 对象类型 通过String()、Number()、Boolean()构筑函数，转化为包装对象</strong></p>
+<p>null 和 undefined 例外， 用在期望是一个对象的地方会造成（TypeError）异常，比如 undefined.a 调用a属性</p>
+<hr>
+<h3 id="对象-gt-转换的类型"><a href="#对象-gt-转换的类型" class="headerlink" title="对象 -&gt; 转换的类型"></a>对象 -&gt; 转换的类型</h3><p><strong>对象-&gt; 布尔类型，都转换为true 包括包装对象</strong></p>
+<p><strong>对象-&gt; 字符串和数值，javascript有两个方法执行转换toString 和 valueOf, 与上面的ToString和ToNumber不同，这两方法直接被暴露出来，除了null的其他所有对象值都有toString方法</strong></p>
+<p>toString方法为Object.prototype上的toString方法，调用对象上的[[class]]内部属性</p>
+<p>很多内置构造函数原型上，定义了自己的toString方法，返回反映对象的字符串，比如：</p>
 <ul>
-<li>实现继承 – 实际的方法</li>
+<li>数组的 toString 方法将每个数组元素转换成一个字符串，并在元素之间添加逗号后合并成结果字符串</li>
+<li>函数的 toString 方法返回源代码字符串</li>
+<li>日期的 toString 方法返回一个可读的日期和时间字符串</li>
+<li>RegExp 的 toString 方法返回一个表示正则表达式直接量的字符串</li>
 </ul>
+<p>valueOf方法，表示对象的原始值，默认valueOf方法返回对象本身，日期是一个例外，返回毫秒数</p>
 <blockquote>
-<p>由于函数没有签名，在ECMAScript中无法实现接口继承</p>
-<p>ECMAScript中只支持实现继承，继承方式主要依赖原型链</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.property = <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.subproperty = <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//向SuperType构造函数的 prototype原型中添加方法属性</span></span><br><span class="line">SuperType.prototype.getSuperValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.property</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//SubType构造函数的 prototype原型指针 指向 SuperType类型的实例</span></span><br><span class="line">SubType.prototype = <span class="keyword">new</span> SuperType()</span><br><span class="line">SubType.prototype.getSubValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.subproperty</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> instance.getSuperValue()</span><br><span class="line">alert(instance.getSuperValue()) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>上例中，SubType构造函数的prototype原型被重写指向SuperType构造函数的一个实例，其中之前SubType构造函数原型中的默认constructor属性被重写，instance.constructor在SuperType原型中</p>
-</blockquote>
-<p>上面例子存在一个问题：</p>
+<p>对象转换会调用ToPrimitive(input[， PerferredType])转换为一个基础类型，再调用上面的ToString或ToNumber方法按上面对应转换</p>
 <ul>
-<li>构造函数SuperType的实例作为构造函数SubType的原型使用，这样所有的SubType构造函数的实例都将<strong><em>共享同一个原型</em></strong>！</li>
-<li>在创建子类型的实例时，无法向超类型的构造函数传参</li>
-</ul>
-<h2 id="伪造对象继承"><a href="#伪造对象继承" class="headerlink" title="伪造对象继承"></a>伪造对象继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="comment">//继承了 SuperType</span></span><br><span class="line">	SuperType.call(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> SubType()</span><br><span class="line">instance1.colors.push(<span class="string">"black"</span>)</span><br><span class="line">alert(instance1.colors); <span class="comment">//"red,blue,green,black"</span></span><br><span class="line"><span class="keyword">var</span> instance2 = <span class="keyword">new</span> SubType()</span><br><span class="line">alert(instance2.colors); <span class="comment">//"red,blue,green"</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>优点可以传递参数给超类型构造函数</li>
-<li>缺点函数无法复用，超类型的原型对子类型不可见</li>
-</ul>
-<h2 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name</span><br><span class="line">	<span class="keyword">this</span>.colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]</span><br><span class="line">&#125;</span><br><span class="line">SuperType.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">	<span class="comment">//继承属性</span></span><br><span class="line">	SuperType.call(<span class="keyword">this</span>, name)</span><br><span class="line">	<span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//继承方法</span></span><br><span class="line">SubType.prototype = <span class="keyword">new</span> SuperType()</span><br><span class="line">SubType.prototype.constructor = SubType</span><br><span class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>.age)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> SubType(<span class="string">"Nicholas"</span>, <span class="number">29</span>)</span><br><span class="line">instance1.colors.push(<span class="string">"black"</span>)</span><br><span class="line">alert(instance1.colors) <span class="comment">//"red,blue,green,black"</span></span><br><span class="line">instance1.sayName() <span class="comment">//"Nicholas";</span></span><br><span class="line">instance1.sayAge() <span class="comment">//29</span></span><br><span class="line"><span class="keyword">var</span> instance2 = <span class="keyword">new</span> SubType(<span class="string">"Greg"</span>, <span class="number">27</span>)</span><br><span class="line">alert(instance2.colors) <span class="comment">//"red,blue,green"</span></span><br><span class="line">instance2.sayName() <span class="comment">//"Greg";</span></span><br><span class="line">instance2.sayAge() <span class="comment">//27</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>最常用的继承，规避了之前的缺陷，融合之前继承的优点</li>
-<li>不足是无论什么情况调用两次超类型构造函数</li>
-</ul>
-<h2 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h2><blockquote>
-<p>有时可以不必借助超类型去创建实例作为子类型的原型</p>
-<p>直接用对象实例作为某一构造函数的原型，不必创建自定义类型</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = o</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name: <span class="string">"Nicholas"</span>,</span><br><span class="line">	friends: [<span class="string">"Shelby"</span>, <span class="string">"Court"</span>, <span class="string">"Van"</span>]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> anotherPerson = object(person);</span><br><span class="line">anotherPerson.name = <span class="string">"Greg"</span>;</span><br><span class="line">anotherPerson.friends.push(<span class="string">"Rob"</span>);</span><br><span class="line"><span class="keyword">var</span> yetAnotherPerson = object(person);</span><br><span class="line">yetAnotherPerson.name = <span class="string">"Linda"</span>;</span><br><span class="line">yetAnotherPerson.friends.push(<span class="string">"Barbie"</span>);</span><br><span class="line">alert(person.friends); <span class="comment">//"Shelby,Court,Van,Rob,Barbie"</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>object函数返回值为传入对象o的浅赋值，其中的<strong>引用类型值</strong>被共享</p>
+<li>PerferredType不传值，只有当input为日期类型时，PerferredType为String. 其它情况一律传入Numer，input为原始值直接返回</li>
+<li><p>ToPrimitive(obj, Number)，处理如下</p>
+<ol>
+<li><p>调用valueOf方法，如返回原始值，则返回该原始值，否则下步</p>
 </li>
-<li><p>ECMAScript5的object.creat()方法规范了继承，支持IE9+</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> anotherPerson = <span class="built_in">Object</span>.create(person, &#123;</span><br><span class="line">	name: &#123;</span><br><span class="line">	value: <span class="string">"Greg"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">alert(anotherPerson.name); <span class="comment">//"Greg"</span></span><br></pre></td></tr></table></figure>
+<li><p>调用toString方法，如果返回原始值，则返回该原始值，否则抛出错误异常</p>
 </li>
+</ol>
+</li>
+<li><p>ToPrimitive(obj, String)，处理如下</p>
+<ol>
+<li><p>调用toString方法，如返回原始值，则返回该原始值，否则下步</p>
+</li>
+<li><p>调用valueOf方法，如返回原始值，则返回该原始值，否则抛出错误异常</p>
+</li>
+</ol>
+</li>
+<li>最后调用ToString或ToNumber方法</li>
 </ul>
-<h2 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h2><blockquote>
-<p>在原型式继承基础上，外面包装一层函数类似工厂模式，在内部以某种方式增强对象</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = o</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span>(<span class="params">original</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> clone = object(original) <span class="comment">//通过调用函数创建一个新对象</span></span><br><span class="line">	clone.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">//以某种方式来增强这个对象</span></span><br><span class="line">	alert(<span class="string">"hi"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> clone <span class="comment">//返回这个对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>object并不是必要的，任何有返回新对象的函数都行</li>
-</ul>
-<h2 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h2><blockquote>
-<p>通过原型式继承获取超类型的原型副本，再将子类型的原型指向其副本，外面用函数封装传入超类型和子类型构造函数</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    F.prototype = o</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">subType, superType</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> prototype = object(superType.prototype); <span class="comment">//创建对象</span></span><br><span class="line">	prototype.constructor = subType; <span class="comment">//增强对象</span></span><br><span class="line">	subType.prototype = prototype; <span class="comment">//指定对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>这样可以做到只调用一次超类型构造函数</li>
-<li>避免了超类构造函数在子类型原型上创建多余属性</li>
-<li>原型链保持不变，instanceof和isPrototypeOf()正常使用</li>
-</ul>
-<blockquote>
-<p>寄生组合继承优于组合继承，是引用类型最理想的继承范式</p>
 </blockquote>
 <hr>
-<p>​                                                                                                         <u>未完待续… 有待补充</u></p>
+<h3 id="JSON-stringify"><a href="#JSON-stringify" class="headerlink" title="JSON.stringify"></a>JSON.stringify</h3><blockquote>
+<p>将JavaScript对象转换为一个JSON字符串，实现上也是调用了toString方法，需要注意的点如下</p>
+</blockquote>
+<ol>
+<li><p>包装对象在序列化过程中会自动转换为对应的原始值</p>
+</li>
+<li><p>传入原始值相当于ToString方法，除了undefined不会被转化为字符串</p>
+</li>
+<li><p>undefined、函数以及symbol 会被忽略(非数组对象中) 或转化为null(数组对象中)</p>
+</li>
+<li><p>如果被序列化的对象有toJSON方法，那么toJSON方法会覆盖原有的默认序列化行为，toJSON的返回值被序列化</p>
+</li>
+<li><p>第二个参数replacer，为数组或函数，筛选对象序列化中的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replacer</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">"string"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">foundation</span>: <span class="string">"Mozilla"</span>, <span class="attr">model</span>: <span class="string">"box"</span>, <span class="attr">week</span>: <span class="number">45</span>, <span class="attr">transport</span>: <span class="string">"car"</span>, <span class="attr">month</span>: <span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> jsonString = <span class="built_in">JSON</span>.stringify(foo, replacer);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(jsonString)</span><br><span class="line"><span class="comment">// &#123;"week":45,"month":7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">foundation</span>: <span class="string">"Mozilla"</span>, <span class="attr">model</span>: <span class="string">"box"</span>, <span class="attr">week</span>: <span class="number">45</span>, <span class="attr">transport</span>: <span class="string">"car"</span>, <span class="attr">month</span>: <span class="number">7</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(foo, [<span class="string">'week'</span>, <span class="string">'month'</span>]));</span><br><span class="line"><span class="comment">// &#123;"week":45,"month":7&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
 
       
     </div>
@@ -599,8 +658,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/16/PromiseA+标准实现自己的Promise/" rel="next" title="Promise A/+ 标准实现">
-                <i class="fa fa-chevron-left"></i> Promise A/+ 标准实现
+              <a href="/2019/05/07/Javascript 数据结构与算法/" rel="next" title="Javascript 数据结构与算法">
+                <i class="fa fa-chevron-left"></i> Javascript 数据结构与算法
               </a>
             
           </div>
@@ -609,8 +668,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/01/07/游览器缓存/" rel="prev" title="游览器缓存">
-                游览器缓存 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/16/PromiseA+标准实现自己的Promise/" rel="prev" title="Promise A/+ 标准实现">
+                Promise A/+ 标准实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -775,7 +834,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-继承"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种继承方式，Javascript仅支持其一："><span class="nav-number">1.0.1.</span> <span class="nav-text">两种继承方式，Javascript仅支持其一：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪造对象继承"><span class="nav-number">1.1.</span> <span class="nav-text">伪造对象继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合继承"><span class="nav-number">1.2.</span> <span class="nav-text">组合继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型式继承"><span class="nav-number">1.3.</span> <span class="nav-text">原型式继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寄生式继承"><span class="nav-number">1.4.</span> <span class="nav-text">寄生式继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寄生组合式继承"><span class="nav-number">1.5.</span> <span class="nav-text">寄生组合式继承</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript-中的类型转换"><span class="nav-number">1.</span> <span class="nav-text">Javascript 中的类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始值-gt-转换的类型"><span class="nav-number">1.1.</span> <span class="nav-text">原始值 -&gt; 转换的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象-gt-转换的类型"><span class="nav-number">1.2.</span> <span class="nav-text">对象 -&gt; 转换的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-stringify"><span class="nav-number">1.3.</span> <span class="nav-text">JSON.stringify</span></a></li></ol></li></ol></div>
             
 
           </div>
