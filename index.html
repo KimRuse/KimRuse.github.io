@@ -432,7 +432,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-24 23:51:54" itemprop="dateModified" datetime="2020-06-24T23:51:54+08:00">2020-06-24</time>
+                <time title="修改时间：2020-06-25 12:16:07" itemprop="dateModified" datetime="2020-06-25T12:16:07+08:00">2020-06-25</time>
               
             
           </span>
@@ -498,10 +498,9 @@
 
       
         
-          
-            <h2 id="Javascript-中的类型转换"><a href="#Javascript-中的类型转换" class="headerlink" title="Javascript 中的类型转换"></a>Javascript 中的类型转换</h2><blockquote>
+          <h2 id="Javascript-中的类型转换"><a href="#Javascript-中的类型转换" class="headerlink" title="Javascript 中的类型转换"></a>Javascript 中的类型转换</h2><blockquote>
 <p>目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object </p>
-<p>以下皆为Number(), String(), Boolean() 函数转换说明</p>
+<p>以下皆为Number(), String(), Boolean() 函数转换说明，隐式转换一样 此如+’12a’会调Number()返回NaN</p>
 </blockquote>
 <h3 id="原始值-gt-转换的类型"><a href="#原始值-gt-转换的类型" class="headerlink" title="原始值 -&gt; 转换的类型"></a>原始值 -&gt; 转换的类型</h3><p><strong>原始值 -&gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefined, null, +0, -0, NaN, “”），其余转true</strong></p>
 <p><strong>原始值 -&gt; 数字类型 规范中给出了一个ToNumber的方法直接给出了，对应的结果</strong></p>
@@ -572,58 +571,423 @@
 <p><strong>原始值 -&gt; 对象类型 通过String()、Number()、Boolean()构筑函数，转化为包装对象</strong></p>
 <p>null 和 undefined 例外， 用在期望是一个对象的地方会造成（TypeError）异常，比如 undefined.a 调用a属性</p>
 <hr>
-<h3 id="对象-gt-转换的类型"><a href="#对象-gt-转换的类型" class="headerlink" title="对象 -&gt; 转换的类型"></a>对象 -&gt; 转换的类型</h3><p><strong>对象-&gt; 布尔类型，都转换为true 包括包装对象</strong></p>
-<p><strong>对象-&gt; 字符串和数值，javascript有两个方法执行转换toString 和 valueOf, 与上面的ToString和ToNumber不同，这两方法直接被暴露出来，除了null的其他所有对象值都有toString方法</strong></p>
-<p>toString方法为Object.prototype上的toString方法，调用对象上的[[class]]内部属性</p>
-<p>很多内置构造函数原型上，定义了自己的toString方法，返回反映对象的字符串，比如：</p>
-<ul>
-<li>数组的 toString 方法将每个数组元素转换成一个字符串，并在元素之间添加逗号后合并成结果字符串</li>
-<li>函数的 toString 方法返回源代码字符串</li>
-<li>日期的 toString 方法返回一个可读的日期和时间字符串</li>
-<li>RegExp 的 toString 方法返回一个表示正则表达式直接量的字符串</li>
-</ul>
-<p>valueOf方法，表示对象的原始值，默认valueOf方法返回对象本身，日期是一个例外，返回毫秒数</p>
-<blockquote>
-<p>对象转换会调用ToPrimitive(input[， PerferredType])转换为一个基础类型，再调用上面的ToString或ToNumber方法按上面对应转换</p>
-<ul>
-<li>PerferredType不传值，只有当input为日期类型时，PerferredType为String. 其它情况一律传入Numer，input为原始值直接返回</li>
-<li><p>ToPrimitive(obj, Number)，处理如下</p>
-<ol>
-<li><p>调用valueOf方法，如返回原始值，则返回该原始值，否则下步</p>
-</li>
-<li><p>调用toString方法，如果返回原始值，则返回该原始值，否则抛出错误异常</p>
-</li>
-</ol>
-</li>
-<li><p>ToPrimitive(obj, String)，处理如下</p>
-<ol>
-<li><p>调用toString方法，如返回原始值，则返回该原始值，否则下步</p>
-</li>
-<li><p>调用valueOf方法，如返回原始值，则返回该原始值，否则抛出错误异常</p>
-</li>
-</ol>
-</li>
-<li>最后调用ToString或ToNumber方法</li>
-</ul>
-</blockquote>
-<hr>
-<h3 id="JSON-stringify"><a href="#JSON-stringify" class="headerlink" title="JSON.stringify"></a>JSON.stringify</h3><blockquote>
-<p>将JavaScript对象转换为一个JSON字符串，实现上也是调用了toString方法，需要注意的点如下</p>
-</blockquote>
-<ol>
-<li><p>包装对象在序列化过程中会自动转换为对应的原始值</p>
-</li>
-<li><p>传入原始值相当于ToString方法，除了undefined不会被转化为字符串</p>
-</li>
-<li><p>undefined、函数以及symbol 会被忽略(非数组对象中) 或转化为null(数组对象中)</p>
-</li>
-<li><p>如果被序列化的对象有toJSON方法，那么toJSON方法会覆盖原有的默认序列化行为，toJSON的返回值被序列化</p>
-</li>
-<li><p>第二个参数replacer，为数组或函数，筛选对象序列化中的属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replacer</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">"string"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">foundation</span>: <span class="string">"Mozilla"</span>, <span class="attr">model</span>: <span class="string">"box"</span>, <span class="attr">week</span>: <span class="number">45</span>, <span class="attr">transport</span>: <span class="string">"car"</span>, <span class="attr">month</span>: <span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> jsonString = <span class="built_in">JSON</span>.stringify(foo, replacer);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(jsonString)</span><br><span class="line"><span class="comment">// &#123;"week":45,"month":7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">foundation</span>: <span class="string">"Mozilla"</span>, <span class="attr">model</span>: <span class="string">"box"</span>, <span class="attr">week</span>: <span class="number">45</span>, <span class="attr">transport</span>: <span class="string">"car"</span>, <span class="attr">month</span>: <span class="number">7</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(foo, [<span class="string">'week'</span>, <span class="string">'month'</span>]));</span><br><span class="line"><span class="comment">// &#123;"week":45,"month":7&#125;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/12/Javascript 中的类型转换/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/Redux与中间件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KimRuse">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宁静致远">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/05/08/Redux与中间件/" class="post-title-link" itemprop="url">Redux与中间件原理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-08 01:49:08" itemprop="dateCreated datePublished" datetime="2020-05-08T01:49:08+08:00">2020-05-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-06-13 22:26:50" itemprop="dateModified" datetime="2020-06-13T22:26:50+08:00">2020-06-13</time>
+              
+            
+          </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/05/08/Redux与中间件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/08/Redux与中间件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Redux与中间件原理"><a href="#Redux与中间件原理" class="headerlink" title="Redux与中间件原理"></a>Redux与中间件原理</h2><blockquote>
+<p>我们在用到一些中间件如redux-thunk或redux-saga，会经常用到applyMiddleware()</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 中间件为redux-thunk时</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">'redux-thunk'</span>;</span><br><span class="line"><span class="keyword">import</span> rootReducer <span class="keyword">from</span> <span class="string">'./reducers/index'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(rootReducer, applyMiddleware(thunk));</span><br></pre></td></tr></table></figure>
+<p>当我们引入中间件时，dispatch这个方法会被高阶函数包装，最后返回一个强化过后的dispatch</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">applyMiddleware(...middlewares)</span><br><span class="line">-&gt; <span class="function">(<span class="params">createStore</span>) =&gt;</span> (reducer, ...args) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> store = &#123;getState&#125; = createStore(reducer, ...args)</span><br><span class="line">    <span class="keyword">let</span> dispatch = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'中间件构建中不许调用'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> chain = middlewares.map(<span class="function"><span class="params">middleware</span> =&gt;</span> middleware(&#123;getState, dispatch&#125;)</span><br><span class="line">    dispatch = compose(...chain)(dispatch)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">	 ...store,</span><br><span class="line">      dispatch</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// @return (...args) =&gt; fn1(fn2(fn3....(...args)))</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">...funcs</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (funcs.length === <span class="number">0</span>) <span class="keyword">return</span> <span class="function">(<span class="params">arg</span>) =&gt;</span> arg</span><br><span class="line">    <span class="keyword">if</span> (funcs.length === <span class="number">1</span>) <span class="keyword">return</span> funcs[<span class="number">0</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> funcs.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> (...args) =&gt; a(b(...args)))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以redux-thunk源码为例，如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleware</span>(<span class="params">extraArgument</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">&#123; dispatch, getState &#125;</span>) =&gt;</span> (next) =&gt; <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> thunk = createThunkMiddleware();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(rootReducer, applyMiddleware(thunk));</span><br><span class="line"><span class="comment">// 经过包装升级的dispatch，</span></span><br><span class="line">store.dispatch = <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>未完待续…</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/PromiseA+标准实现自己的Promise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KimRuse">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宁静致远">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/16/PromiseA+标准实现自己的Promise/" class="post-title-link" itemprop="url">Promise A/+ 标准实现</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-16 20:19:49" itemprop="dateCreated datePublished" datetime="2019-05-16T20:19:49+08:00">2019-05-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-06-11 21:44:41" itemprop="dateModified" datetime="2020-06-11T21:44:41+08:00">2020-06-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/16/PromiseA+标准实现自己的Promise/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/16/PromiseA+标准实现自己的Promise/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Promise-A-标准实现自己的-Promise"><a href="#Promise-A-标准实现自己的-Promise" class="headerlink" title="Promise A/+ 标准实现自己的 Promise"></a>Promise A/+ 标准实现自己的 Promise</h2><p><a href="https://promisesaplus.com/" target="_blank" rel="noopener">Promise A/+规范</a>    <strong>文档地址</strong></p>
+<h3 id="规范中的术语"><a href="#规范中的术语" class="headerlink" title="规范中的术语"></a>规范中的术语</h3><blockquote>
+<ol>
+<li>“promise” 是拥有符合规范的then方法的一个对象或函数</li>
+<li>“thenable” 一个定义了then方法的对象或函数</li>
+<li>“value” 任意的合法JS值</li>
+<li>“reason” 一个指示promise为什么被拒绝的值</li>
+<li>“exception” 一个通过throw语句抛出的值</li>
+</ol>
+</blockquote>
+<h3 id="Promise状态"><a href="#Promise状态" class="headerlink" title="Promise状态"></a>Promise状态</h3><p><strong><em>一个Promise必须是pending、fulfilled、rejected三种状态之一</em></strong></p>
+<blockquote>
+<ol>
+<li>pending状态时，可转换为 fulfilled 或 rejected 状态</li>
+<li>fulfilled状态时，不能转化其他状态 且 必须包含value，value不能改变</li>
+<li><p>rejected状态时，不能转化其他状态 且 必须包含reason，reason不能改变</p>
+<p>( 不能改变是指，通过===判定相等 即不变，非深层不变 )</p>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Promise</span>(<span class="params">exc</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里没有实现隐藏this上的变量</span></span><br><span class="line">	<span class="keyword">let</span> self = <span class="keyword">this</span></span><br><span class="line">    self.status = <span class="string">'pending'</span></span><br><span class="line">    self.data = <span class="keyword">void</span> <span class="number">0</span></span><br><span class="line">    self.onResolvedCallback = []</span><br><span class="line">    self.onRejectedCallback = []</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">val</span>) </span>&#123;<span class="comment">/**TODO*/</span>&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">reject</span>(<span class="params">res</span>) </span>&#123;<span class="comment">/**TODO*/</span>&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">		exc(resolve.bind(<span class="keyword">this</span>), reject.bind(<span class="keyword">this</span>))</span><br><span class="line">    &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        reject(e)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来实现resolve 和 reject 处理变更后的状态和值，及可能的回调</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 异步执行所有的回调函数</span></span><br><span class="line">      <span class="keyword">if</span> (_this.status === <span class="string">"pending"</span>) &#123;</span><br><span class="line">        _this.status = <span class="string">"resolved"</span>;</span><br><span class="line">        _this.data = value;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; _this.onResolvedCallback.length; i++) &#123;</span><br><span class="line">          _this.onResolvedCallback[i](value);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reject</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 异步执行所有的回调函数</span></span><br><span class="line">      <span class="keyword">if</span> (_this.status === <span class="string">"pending"</span>) &#123;</span><br><span class="line">        _this.status = <span class="string">"rejected"</span>;</span><br><span class="line">        _this.data = reason;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; _this.onRejectedCallback.length; i++) &#123;</span><br><span class="line">          _this.onRejectedCallback[i](reason);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/16/PromiseA+标准实现自己的Promise/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -890,7 +1254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/Redux与中间件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/参考Babel编写async await的简单实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KimRuse">
@@ -910,7 +1274,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2020/05/08/Redux与中间件/" class="post-title-link" itemprop="url">Redux与中间件原理</a>
+                <a href="/2020/02/08/参考Babel编写async await的简单实现/" class="post-title-link" itemprop="url">参考Babel编写async await的简单实现</a>
               
             
           </h1>
@@ -935,7 +1299,7 @@
                 
               
 
-              <time title="创建时间：2020-05-08 01:49:08" itemprop="dateCreated datePublished" datetime="2020-05-08T01:49:08+08:00">2020-05-08</time>
+              <time title="创建时间：2020-02-08 01:49:08" itemprop="dateCreated datePublished" datetime="2020-02-08T01:49:08+08:00">2020-02-08</time>
             
 
             
@@ -952,7 +1316,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-13 22:26:50" itemprop="dateModified" datetime="2020-06-13T22:26:50+08:00">2020-06-13</time>
+                <time title="修改时间：2020-06-12 16:23:24" itemprop="dateModified" datetime="2020-06-12T16:23:24+08:00">2020-06-12</time>
               
             
           </span>
@@ -988,8 +1352,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/05/08/Redux与中间件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/08/Redux与中间件/" itemprop="commentCount"></span>
+                <a href="/2020/02/08/参考Babel编写async await的简单实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/08/参考Babel编写async await的简单实现/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1019,426 +1383,14 @@
       
         
           
-            <h2 id="Redux与中间件原理"><a href="#Redux与中间件原理" class="headerlink" title="Redux与中间件原理"></a>Redux与中间件原理</h2><blockquote>
-<p>我们在用到一些中间件如redux-thunk或redux-saga，会经常用到applyMiddleware()</p>
+            <h2 id="参考Babel编写async-await的简单实现"><a href="#参考Babel编写async-await的简单实现" class="headerlink" title="参考Babel编写async await的简单实现"></a>参考Babel编写async await的简单实现</h2><blockquote>
+<p>async函数是generator函数的语法糖</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 中间件为redux-thunk时</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">'redux-thunk'</span>;</span><br><span class="line"><span class="keyword">import</span> rootReducer <span class="keyword">from</span> <span class="string">'./reducers/index'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(rootReducer, applyMiddleware(thunk));</span><br></pre></td></tr></table></figure>
-<p>当我们引入中间件时，dispatch这个方法会被高阶函数包装，最后返回一个强化过后的dispatch</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">applyMiddleware(...middlewares)</span><br><span class="line">-&gt; <span class="function">(<span class="params">createStore</span>) =&gt;</span> (reducer, ...args) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> store = &#123;getState&#125; = createStore(reducer, ...args)</span><br><span class="line">    <span class="keyword">let</span> dispatch = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'中间件构建中不许调用'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> chain = middlewares.map(<span class="function"><span class="params">middleware</span> =&gt;</span> middleware(&#123;getState, dispatch&#125;)</span><br><span class="line">    dispatch = compose(...chain)(dispatch)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">	 ...store,</span><br><span class="line">      dispatch</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// @return (...args) =&gt; fn1(fn2(fn3....(...args)))</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">...funcs</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (funcs.length === <span class="number">0</span>) <span class="keyword">return</span> <span class="function">(<span class="params">arg</span>) =&gt;</span> arg</span><br><span class="line">    <span class="keyword">if</span> (funcs.length === <span class="number">1</span>) <span class="keyword">return</span> funcs[<span class="number">0</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> funcs.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> (...args) =&gt; a(b(...args)))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以redux-thunk源码为例，如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleware</span>(<span class="params">extraArgument</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">&#123; dispatch, getState &#125;</span>) =&gt;</span> (next) =&gt; <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> thunk = createThunkMiddleware();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(rootReducer, applyMiddleware(thunk));</span><br><span class="line"><span class="comment">// 经过包装升级的dispatch，</span></span><br><span class="line">store.dispatch = <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>未完待续…</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>resolve(<span class="string">"data"</span>), <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> data = <span class="keyword">await</span> getData()</span><br><span class="line">    <span class="keyword">const</span> data2 = <span class="keyword">await</span> getData()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'success'</span></span><br><span class="line">&#125;</span><br><span class="line">test().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line"><span class="comment">// 转化await到yield</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">testG</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> data = <span class="keyword">yield</span> getData()</span><br><span class="line">    <span class="keyword">const</span> data2 = <span class="keyword">yield</span> getData()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'success'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 每次调用next的方法就会在下一个的yield的地方停留</span></span><br><span class="line"><span class="comment">* 利用这一特性，编写一个自动执行的函数就可以，async函数的功能</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">let</span> test = asyncToGenerator(</span><br><span class="line">	testG</span><br><span class="line">)</span><br><span class="line">test().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br></pre></td></tr></table></figure>
+<p>有了一些上面的思路，就可以这样写asyncToGenerator函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> asyncToGenerator = <span class="function">(<span class="params">fn</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">...props</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> gen = fn(...props)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params">key, arg</span>) </span>&#123;</span><br><span class="line">		   	   <span class="keyword">let</span> generatorResult</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">				generatorResult = gen[key](arg)</span><br><span class="line">                &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">                    <span class="keyword">return</span> reject(e)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">const</span> &#123;val, done&#125; = generatorResult</span><br><span class="line">                <span class="keyword">if</span> (done) &#123;</span><br><span class="line">                    <span class="keyword">return</span> resolve(val)</span><br><span class="line">                &#125; <span class="keyword">else</span> </span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(val).then(<span class="function"><span class="params">val</span>=&gt;</span>step(<span class="string">'next'</span>, val), err=&gt;step(<span class="string">'throw'</span>, err))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">asyncToGenerator(fn)().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br></pre></td></tr></table></figure>
 
           
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/js/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimRuse">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宁静致远">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/16/js/" class="post-title-link" itemprop="url">Javascript继承</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-16 20:19:49" itemprop="dateCreated datePublished" datetime="2019-05-16T20:19:49+08:00">2019-05-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-06-07 21:48:25" itemprop="dateModified" datetime="2020-06-07T21:48:25+08:00">2020-06-07</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/16/js/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/16/js/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="JavaScript-继承"><a href="#JavaScript-继承" class="headerlink" title="JavaScript 继承"></a>JavaScript 继承</h1><h3 id="两种继承方式，Javascript仅支持其一："><a href="#两种继承方式，Javascript仅支持其一：" class="headerlink" title="两种继承方式，Javascript仅支持其一："></a>两种继承方式，Javascript仅支持其一：</h3><ul>
-<li>接口继承 – 方法签名 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//PHP中的接口继承</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">InterA</span> </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> TITLE = <span class="string">"PHP接口继承"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span><span class="params">($a, $b)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">InterB</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">readMe</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">InterA</span>,<span class="title">InterB</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span><span class="params">($name, $age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">"&#123;$name&#125;的年龄是&#123;$age&#125;岁！&lt;br&gt;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">readMe</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="keyword">self</span>::TITLE;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/16/js/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/PromiseA+标准实现自己的Promise/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimRuse">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宁静致远">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/16/PromiseA+标准实现自己的Promise/" class="post-title-link" itemprop="url">Promise A/+ 标准实现</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-16 20:19:49" itemprop="dateCreated datePublished" datetime="2019-05-16T20:19:49+08:00">2019-05-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-06-11 21:44:41" itemprop="dateModified" datetime="2020-06-11T21:44:41+08:00">2020-06-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/16/PromiseA+标准实现自己的Promise/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/16/PromiseA+标准实现自己的Promise/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Promise-A-标准实现自己的-Promise"><a href="#Promise-A-标准实现自己的-Promise" class="headerlink" title="Promise A/+ 标准实现自己的 Promise"></a>Promise A/+ 标准实现自己的 Promise</h2><p><a href="https://promisesaplus.com/" target="_blank" rel="noopener">Promise A/+规范</a>    <strong>文档地址</strong></p>
-<h3 id="规范中的术语"><a href="#规范中的术语" class="headerlink" title="规范中的术语"></a>规范中的术语</h3><blockquote>
-<ol>
-<li>“promise” 是拥有符合规范的then方法的一个对象或函数</li>
-<li>“thenable” 一个定义了then方法的对象或函数</li>
-<li>“value” 任意的合法JS值</li>
-<li>“reason” 一个指示promise为什么被拒绝的值</li>
-<li>“exception” 一个通过throw语句抛出的值</li>
-</ol>
-</blockquote>
-<h3 id="Promise状态"><a href="#Promise状态" class="headerlink" title="Promise状态"></a>Promise状态</h3><p><strong><em>一个Promise必须是pending、fulfilled、rejected三种状态之一</em></strong></p>
-<blockquote>
-<ol>
-<li>pending状态时，可转换为 fulfilled 或 rejected 状态</li>
-<li>fulfilled状态时，不能转化其他状态 且 必须包含value，value不能改变</li>
-<li><p>rejected状态时，不能转化其他状态 且 必须包含reason，reason不能改变</p>
-<p>( 不能改变是指，通过===判定相等 即不变，非深层不变 )</p>
-</li>
-</ol>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Promise</span>(<span class="params">exc</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里没有实现隐藏this上的变量</span></span><br><span class="line">	<span class="keyword">let</span> self = <span class="keyword">this</span></span><br><span class="line">    self.status = <span class="string">'pending'</span></span><br><span class="line">    self.data = <span class="keyword">void</span> <span class="number">0</span></span><br><span class="line">    self.onResolvedCallback = []</span><br><span class="line">    self.onRejectedCallback = []</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">val</span>) </span>&#123;<span class="comment">/**TODO*/</span>&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">reject</span>(<span class="params">res</span>) </span>&#123;<span class="comment">/**TODO*/</span>&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">		exc(resolve.bind(<span class="keyword">this</span>), reject.bind(<span class="keyword">this</span>))</span><br><span class="line">    &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        reject(e)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接下来实现resolve 和 reject 处理变更后的状态和值，及可能的回调</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 异步执行所有的回调函数</span></span><br><span class="line">      <span class="keyword">if</span> (_this.status === <span class="string">"pending"</span>) &#123;</span><br><span class="line">        _this.status = <span class="string">"resolved"</span>;</span><br><span class="line">        _this.data = value;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; _this.onResolvedCallback.length; i++) &#123;</span><br><span class="line">          _this.onResolvedCallback[i](value);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reject</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 异步执行所有的回调函数</span></span><br><span class="line">      <span class="keyword">if</span> (_this.status === <span class="string">"pending"</span>) &#123;</span><br><span class="line">        _this.status = <span class="string">"rejected"</span>;</span><br><span class="line">        _this.data = reason;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; _this.onRejectedCallback.length; i++) &#123;</span><br><span class="line">          _this.onRejectedCallback[i](reason);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/16/PromiseA+标准实现自己的Promise/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -1743,7 +1695,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/参考Babel编写async await的简单实现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KimRuse">
@@ -1763,7 +1715,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2020/02/08/参考Babel编写async await的简单实现/" class="post-title-link" itemprop="url">参考Babel编写async await的简单实现</a>
+                <a href="/2019/05/16/js/" class="post-title-link" itemprop="url">Javascript继承</a>
               
             
           </h1>
@@ -1788,7 +1740,7 @@
                 
               
 
-              <time title="创建时间：2020-02-08 01:49:08" itemprop="dateCreated datePublished" datetime="2020-02-08T01:49:08+08:00">2020-02-08</time>
+              <time title="创建时间：2019-05-16 20:19:49" itemprop="dateCreated datePublished" datetime="2019-05-16T20:19:49+08:00">2019-05-16</time>
             
 
             
@@ -1805,7 +1757,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-12 16:23:24" itemprop="dateModified" datetime="2020-06-12T16:23:24+08:00">2020-06-12</time>
+                <time title="修改时间：2020-06-07 21:48:25" itemprop="dateModified" datetime="2020-06-07T21:48:25+08:00">2020-06-07</time>
               
             
           </span>
@@ -1841,8 +1793,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/02/08/参考Babel编写async await的简单实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/08/参考Babel编写async await的简单实现/" itemprop="commentCount"></span>
+                <a href="/2019/05/16/js/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/16/js/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1871,15 +1823,19 @@
 
       
         
+          <h1 id="JavaScript-继承"><a href="#JavaScript-继承" class="headerlink" title="JavaScript 继承"></a>JavaScript 继承</h1><h3 id="两种继承方式，Javascript仅支持其一："><a href="#两种继承方式，Javascript仅支持其一：" class="headerlink" title="两种继承方式，Javascript仅支持其一："></a>两种继承方式，Javascript仅支持其一：</h3><ul>
+<li>接口继承 – 方法签名 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//PHP中的接口继承</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">InterA</span> </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> TITLE = <span class="string">"PHP接口继承"</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span><span class="params">($a, $b)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">InterB</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">readMe</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">InterA</span>,<span class="title">InterB</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span><span class="params">($name, $age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">"&#123;$name&#125;的年龄是&#123;$age&#125;岁！&lt;br&gt;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">readMe</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="keyword">self</span>::TITLE;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
           
-            <h2 id="参考Babel编写async-await的简单实现"><a href="#参考Babel编写async-await的简单实现" class="headerlink" title="参考Babel编写async await的简单实现"></a>参考Babel编写async await的简单实现</h2><blockquote>
-<p>async函数是generator函数的语法糖</p>
-</blockquote>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getData = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>resolve(<span class="string">"data"</span>), <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> data = <span class="keyword">await</span> getData()</span><br><span class="line">    <span class="keyword">const</span> data2 = <span class="keyword">await</span> getData()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'success'</span></span><br><span class="line">&#125;</span><br><span class="line">test().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br><span class="line"><span class="comment">// 转化await到yield</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">testG</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> data = <span class="keyword">yield</span> getData()</span><br><span class="line">    <span class="keyword">const</span> data2 = <span class="keyword">yield</span> getData()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'success'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 每次调用next的方法就会在下一个的yield的地方停留</span></span><br><span class="line"><span class="comment">* 利用这一特性，编写一个自动执行的函数就可以，async函数的功能</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">let</span> test = asyncToGenerator(</span><br><span class="line">	testG</span><br><span class="line">)</span><br><span class="line">test().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br></pre></td></tr></table></figure>
-<p>有了一些上面的思路，就可以这样写asyncToGenerator函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> asyncToGenerator = <span class="function">(<span class="params">fn</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">...props</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> gen = fn(...props)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params">key, arg</span>) </span>&#123;</span><br><span class="line">		   	   <span class="keyword">let</span> generatorResult</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">				generatorResult = gen[key](arg)</span><br><span class="line">                &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">                    <span class="keyword">return</span> reject(e)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">const</span> &#123;val, done&#125; = generatorResult</span><br><span class="line">                <span class="keyword">if</span> (done) &#123;</span><br><span class="line">                    <span class="keyword">return</span> resolve(val)</span><br><span class="line">                &#125; <span class="keyword">else</span> </span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(val).then(<span class="function"><span class="params">val</span>=&gt;</span>step(<span class="string">'next'</span>, val), err=&gt;step(<span class="string">'throw'</span>, err))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">asyncToGenerator(fn)().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br></pre></td></tr></table></figure>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/16/js/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>

@@ -147,29 +147,6 @@
   </entry>
   
   <entry>
-    <title>Javascript继承</title>
-    <link href="http://yoursite.com/2019/05/16/js/"/>
-    <id>http://yoursite.com/2019/05/16/js/</id>
-    <published>2019-05-16T12:19:49.000Z</published>
-    <updated>2020-06-07T13:48:25.561Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;JavaScript-继承&quot;&gt;&lt;a href=&quot;#JavaScript-继承&quot; class=&quot;headerlink&quot; title=&quot;JavaScript 继承&quot;&gt;&lt;/a&gt;JavaScript 继承&lt;/h1&gt;&lt;h3 id=&quot;两种继承方式，Javascript仅支持其一：&quot;&gt;&lt;a href=&quot;#两种继承方式，Javascript仅支持其一：&quot; class=&quot;headerlink&quot; title=&quot;两种继承方式，Javascript仅支持其一：&quot;&gt;&lt;/a&gt;两种继承方式，Javascript仅支持其一：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;接口继承 – 方法签名 &lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//PHP中的接口继承&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;InterA&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; TITLE = &lt;span class=&quot;string&quot;&gt;&quot;PHP接口继承&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;showInfo&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;($a, $b)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;InterB&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;readMe&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Student&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;InterA&lt;/span&gt;,&lt;span class=&quot;title&quot;&gt;InterB&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;showInfo&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;($name, $age)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;&amp;#123;$name&amp;#125;的年龄是&amp;#123;$age&amp;#125;岁！&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;readMe&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;::TITLE;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="编程语言" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-    
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Promise A/+ 标准实现</title>
     <link href="http://yoursite.com/2019/05/16/PromiseA+%E6%A0%87%E5%87%86%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%B7%B1%E7%9A%84Promise/"/>
     <id>http://yoursite.com/2019/05/16/PromiseA+标准实现自己的Promise/</id>
@@ -212,21 +189,110 @@
   </entry>
   
   <entry>
+    <title>Javascript继承</title>
+    <link href="http://yoursite.com/2019/05/16/js/"/>
+    <id>http://yoursite.com/2019/05/16/js/</id>
+    <published>2019-05-16T12:19:49.000Z</published>
+    <updated>2020-06-07T13:48:25.561Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;JavaScript-继承&quot;&gt;&lt;a href=&quot;#JavaScript-继承&quot; class=&quot;headerlink&quot; title=&quot;JavaScript 继承&quot;&gt;&lt;/a&gt;JavaScript 继承&lt;/h1&gt;&lt;h3 id=&quot;两种继承方式，Javascript仅支持其一：&quot;&gt;&lt;a href=&quot;#两种继承方式，Javascript仅支持其一：&quot; class=&quot;headerlink&quot; title=&quot;两种继承方式，Javascript仅支持其一：&quot;&gt;&lt;/a&gt;两种继承方式，Javascript仅支持其一：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;接口继承 – 方法签名 &lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//PHP中的接口继承&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;InterA&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; TITLE = &lt;span class=&quot;string&quot;&gt;&quot;PHP接口继承&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;showInfo&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;($a, $b)&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;InterB&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;readMe&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Student&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;InterA&lt;/span&gt;,&lt;span class=&quot;title&quot;&gt;InterB&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;showInfo&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;($name, $age)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;&amp;#123;$name&amp;#125;的年龄是&amp;#123;$age&amp;#125;岁！&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;readMe&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;::TITLE;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="编程语言" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Javascript 中的类型转换</title>
     <link href="http://yoursite.com/2019/05/12/Javascript%20%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
     <id>http://yoursite.com/2019/05/12/Javascript 中的类型转换/</id>
     <published>2019-05-11T17:49:08.000Z</published>
-    <updated>2020-06-24T15:51:54.174Z</updated>
+    <updated>2020-06-25T04:16:07.611Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;Javascript-中的类型转换&quot;&gt;&lt;a href=&quot;#Javascript-中的类型转换&quot; class=&quot;headerlink&quot; title=&quot;Javascript 中的类型转换&quot;&gt;&lt;/a&gt;Javascript
-        
-      
+      &lt;h2 id=&quot;Javascript-中的类型转换&quot;&gt;&lt;a href=&quot;#Javascript-中的类型转换&quot; class=&quot;headerlink&quot; title=&quot;Javascript 中的类型转换&quot;&gt;&lt;/a&gt;Javascript 中的类型转换&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object &lt;/p&gt;
+&lt;p&gt;以下皆为Number(), String(), Boolean() 函数转换说明，隐式转换一样 此如+’12a’会调Number()返回NaN&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;原始值-gt-转换的类型&quot;&gt;&lt;a href=&quot;#原始值-gt-转换的类型&quot; class=&quot;headerlink&quot; title=&quot;原始值 -&amp;gt; 转换的类型&quot;&gt;&lt;/a&gt;原始值 -&amp;gt; 转换的类型&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;原始值 -&amp;gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefined, null, +0, -0, NaN, “”），其余转true&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原始值 -&amp;gt; 数字类型 规范中给出了一个ToNumber的方法直接给出了，对应的结果&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数类型&lt;/th&gt;
+&lt;th&gt;结果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Undefined&lt;/td&gt;
+&lt;td&gt;NaN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Null&lt;/td&gt;
+&lt;td&gt;+0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Boolean&lt;/td&gt;
+&lt;td&gt;true 1 false +0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Number&lt;/td&gt;
+&lt;td&gt;返回等值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td&gt;比较复杂，看下面例子&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Number试图转换字符串为整数或浮点数，忽略前导0，遇到一个非字符数返回NaN；&lt;/p&gt;
+&lt;p&gt;一般使用parseInt和parseFloat，尽可能多解析数值字符，并忽略后面的内容，空字符串和第一个非数值字符返回NaN；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原始值-&amp;gt;字符类型 规范中给出了一个ToString的方法，对应结果&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数类型&lt;/th&gt;
+&lt;th&gt;结果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Undefined&lt;/td&gt;
+&lt;td&gt;“undefined”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Null&lt;/td&gt;
+&lt;td&gt;“null”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Boolean&lt;/td&gt;
+&lt;td&gt;true “true” false “false”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Number&lt;/td&gt;
+&lt;td&gt;数值字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td&gt;返回等值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;NaN -&amp;gt; “NaN” ，Infinity -&amp;gt; “Infinity” ，-Infinity -&amp;gt; “-Infinity” ，-0+0 -&amp;gt; “0”&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原始值 -&amp;gt; 对象类型 通过String()、Number()、Boolean()构筑函数，转化为包装对象&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;null 和 undefined 例外， 用在期望是一个对象的地方会造成（TypeError）异常，比如 undefined.a 调用a属性&lt;/p&gt;
+&lt;hr&gt;
     
     </summary>
     

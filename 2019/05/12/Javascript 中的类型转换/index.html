@@ -94,18 +94,20 @@
 
 
 
-  <meta name="description" content="Javascript 中的类型转换 目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object  以下皆为Number(), String(), Boolean() 函数转换说明  原始值 -&amp;gt; 转换的类型原始值 -&amp;gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefine">
+  <meta name="description" content="Javascript 中的类型转换 目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object  以下皆为Number(), String(), Boolean() 函数转换说明，隐式转换一样 此如+’12a’会调Number()返回NaN  原始值 -&amp;gt; 转换的类型原始值 -&amp;gt; 布尔类型Boolean()">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript 中的类型转换">
 <meta property="og:url" content="http://yoursite.com/2019/05/12/Javascript 中的类型转换/index.html">
 <meta property="og:site_name" content="宁静致远">
-<meta property="og:description" content="Javascript 中的类型转换 目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object  以下皆为Number(), String(), Boolean() 函数转换说明  原始值 -&amp;gt; 转换的类型原始值 -&amp;gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefine">
+<meta property="og:description" content="Javascript 中的类型转换 目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object  以下皆为Number(), String(), Boolean() 函数转换说明，隐式转换一样 此如+’12a’会调Number()返回NaN  原始值 -&amp;gt; 转换的类型原始值 -&amp;gt; 布尔类型Boolean()">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-24T15:51:54.174Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/12/Javascript%20中的类型转换/==.PNG">
+<meta property="og:updated_time" content="2020-06-25T04:16:07.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript 中的类型转换">
-<meta name="twitter:description" content="Javascript 中的类型转换 目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object  以下皆为Number(), String(), Boolean() 函数转换说明  原始值 -&amp;gt; 转换的类型原始值 -&amp;gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefine">
+<meta name="twitter:description" content="Javascript 中的类型转换 目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object  以下皆为Number(), String(), Boolean() 函数转换说明，隐式转换一样 此如+’12a’会调Number()返回NaN  原始值 -&amp;gt; 转换的类型原始值 -&amp;gt; 布尔类型Boolean()">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/12/Javascript%20中的类型转换/==.PNG">
 
 
 
@@ -434,7 +436,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-24 23:51:54" itemprop="dateModified" datetime="2020-06-24T23:51:54+08:00">2020-06-24</time>
+                <time title="修改时间：2020-06-25 12:16:07" itemprop="dateModified" datetime="2020-06-25T12:16:07+08:00">2020-06-25</time>
               
             
           </span>
@@ -501,7 +503,7 @@
       
         <h2 id="Javascript-中的类型转换"><a href="#Javascript-中的类型转换" class="headerlink" title="Javascript 中的类型转换"></a>Javascript 中的类型转换</h2><blockquote>
 <p>目前JS中有8种类型，Undefined、Null、Boolean、Number、String、Symbol、BigInt、Object </p>
-<p>以下皆为Number(), String(), Boolean() 函数转换说明</p>
+<p>以下皆为Number(), String(), Boolean() 函数转换说明，隐式转换一样 此如+’12a’会调Number()返回NaN</p>
 </blockquote>
 <h3 id="原始值-gt-转换的类型"><a href="#原始值-gt-转换的类型" class="headerlink" title="原始值 -&gt; 转换的类型"></a>原始值 -&gt; 转换的类型</h3><p><strong>原始值 -&gt; 布尔类型Boolean() 只有6种值会被转换成false（false, undefined, null, +0, -0, NaN, “”），其余转true</strong></p>
 <p><strong>原始值 -&gt; 数字类型 规范中给出了一个ToNumber的方法直接给出了，对应的结果</strong></p>
@@ -572,6 +574,7 @@
 <p><strong>原始值 -&gt; 对象类型 通过String()、Number()、Boolean()构筑函数，转化为包装对象</strong></p>
 <p>null 和 undefined 例外， 用在期望是一个对象的地方会造成（TypeError）异常，比如 undefined.a 调用a属性</p>
 <hr>
+<a id="more"></a>
 <h3 id="对象-gt-转换的类型"><a href="#对象-gt-转换的类型" class="headerlink" title="对象 -&gt; 转换的类型"></a>对象 -&gt; 转换的类型</h3><p><strong>对象-&gt; 布尔类型，都转换为true 包括包装对象</strong></p>
 <p><strong>对象-&gt; 字符串和数值，javascript有两个方法执行转换toString 和 valueOf, 与上面的ToString和ToNumber不同，这两方法直接被暴露出来，除了null的其他所有对象值都有toString方法</strong></p>
 <p>toString方法为Object.prototype上的toString方法，调用对象上的[[class]]内部属性</p>
@@ -586,7 +589,7 @@
 <blockquote>
 <p>对象转换会调用ToPrimitive(input[， PerferredType])转换为一个基础类型，再调用上面的ToString或ToNumber方法按上面对应转换</p>
 <ul>
-<li>PerferredType不传值，只有当input为日期类型时，PerferredType为String. 其它情况一律传入Numer，input为原始值直接返回</li>
+<li>PerferredType不传值，只有当input为日期类型时，PerferredType为String. 其它情况一律传入Numer，input<strong><em>为原始值直接返回</em></strong></li>
 <li><p>ToPrimitive(obj, Number)，处理如下</p>
 <ol>
 <li><p>调用valueOf方法，如返回原始值，则返回该原始值，否则下步</p>
@@ -620,8 +623,37 @@
 <li><p>如果被序列化的对象有toJSON方法，那么toJSON方法会覆盖原有的默认序列化行为，toJSON的返回值被序列化</p>
 </li>
 <li><p>第二个参数replacer，为数组或函数，筛选对象序列化中的属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replacer</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">"string"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">foundation</span>: <span class="string">"Mozilla"</span>, <span class="attr">model</span>: <span class="string">"box"</span>, <span class="attr">week</span>: <span class="number">45</span>, <span class="attr">transport</span>: <span class="string">"car"</span>, <span class="attr">month</span>: <span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> jsonString = <span class="built_in">JSON</span>.stringify(foo, replacer);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(jsonString)</span><br><span class="line"><span class="comment">// &#123;"week":45,"month":7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">foundation</span>: <span class="string">"Mozilla"</span>, <span class="attr">model</span>: <span class="string">"box"</span>, <span class="attr">week</span>: <span class="number">45</span>, <span class="attr">transport</span>: <span class="string">"car"</span>, <span class="attr">month</span>: <span class="number">7</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(foo, [<span class="string">'week'</span>, <span class="string">'month'</span>]));</span><br><span class="line"><span class="comment">// &#123;"week":45,"month":7&#125;</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replacer</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">"string"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">foundation</span>: <span class="string">"Mozilla"</span>, <span class="attr">model</span>: <span class="string">"box"</span>, <span class="attr">week</span>: <span class="number">45</span>, <span class="attr">transport</span>: <span class="string">"car"</span>, <span class="attr">month</span>: <span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> jsonString = <span class="built_in">JSON</span>.stringify(foo, replacer);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(jsonString)</span><br><span class="line"><span class="comment">// &#123;"week":45,"month":7&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">foundation</span>: <span class="string">"Mozilla"</span>, <span class="attr">model</span>: <span class="string">"box"</span>, <span class="attr">week</span>: <span class="number">45</span>, <span class="attr">transport</span>: <span class="string">"car"</span>, <span class="attr">month</span>: <span class="number">7</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(foo, [<span class="string">'week'</span>, <span class="string">'month'</span>]));</span><br><span class="line"><span class="comment">// &#123;"week":45,"month":7&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
+<hr>
+<h3 id="隐式类型转化"><a href="#隐式类型转化" class="headerlink" title="隐式类型转化"></a>隐式类型转化</h3><p><em>一元操作符</em> +</p>
+<p>基础类型ToNumber方法对应上面，对象调用ToPrimitive(input, Number)再调用ToNumber方法，如+{} +[‘1’, ‘2’]都为NaN</p>
+<p>二元操作符+</p>
+<p>当计算value1 + value2时:</p>
+<ol>
+<li>lprim = ToPrimitive(value1) </li>
+<li>rprim = ToPrimitive(value2)</li>
+<li>如果 lprim 是字符串或者 rprim 是字符串，那么返回 ToString(lprim) 和 ToString(rprim)的拼接结果</li>
+<li>返回 ToNumber(lprim) 和 ToNumber(rprim)的运算结果</li>
+</ol>
+<blockquote>
+<p>注意value为Date对象的时候，PerferredType为String，其余情况Number</p>
+</blockquote>
+<p>1+’2’ -&gt; ‘12’ ， undefined + 1 -&gt; NaN ， undefined + ‘1’ -&gt; ‘undefined1’ ， null + 1 -&gt; 1</p>
+<p>二元操作符 ==</p>
+<p>规范给出了所有情况</p>
+<p><img src="/2019/05/12/Javascript 中的类型转换/==.PNG" alt></p>
+<p>分4种情况开看，第一条针对同类型不作考虑，考虑2~9条</p>
+<blockquote>
+<ol>
+<li>null 和 undefined 看2、3两条 返回true</li>
+<li>字符串与数字，看4、5两条 都是转换成数字后比较</li>
+<li>布尔值和其它类型，看6、7两条 布尔值一方ToNumber处理</li>
+<li>对象与非对象，看8、9两条</li>
+<li>不属于以上情况一律false</li>
+</ol>
+</blockquote>
 
       
     </div>
@@ -668,8 +700,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/16/PromiseA+标准实现自己的Promise/" rel="prev" title="Promise A/+ 标准实现">
-                Promise A/+ 标准实现 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/16/js/" rel="prev" title="Javascript继承">
+                Javascript继承 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -834,7 +866,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript-中的类型转换"><span class="nav-number">1.</span> <span class="nav-text">Javascript 中的类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始值-gt-转换的类型"><span class="nav-number">1.1.</span> <span class="nav-text">原始值 -&gt; 转换的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象-gt-转换的类型"><span class="nav-number">1.2.</span> <span class="nav-text">对象 -&gt; 转换的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-stringify"><span class="nav-number">1.3.</span> <span class="nav-text">JSON.stringify</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript-中的类型转换"><span class="nav-number">1.</span> <span class="nav-text">Javascript 中的类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始值-gt-转换的类型"><span class="nav-number">1.1.</span> <span class="nav-text">原始值 -&gt; 转换的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象-gt-转换的类型"><span class="nav-number">1.2.</span> <span class="nav-text">对象 -&gt; 转换的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-stringify"><span class="nav-number">1.3.</span> <span class="nav-text">JSON.stringify</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式类型转化"><span class="nav-number">1.4.</span> <span class="nav-text">隐式类型转化</span></a></li></ol></li></ol></div>
             
 
           </div>
